@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkgatsby_starter_blog=self.webpackChunkgatsby_starter_blog||[]).push([[883],{9616:function(t,e,a){a.r(e);var l=a(7294),n=a(7198),r=a(3751);e.default=function(t){var e=t.data,a=t.location,o=e.site.siteMetadata.title;return l.createElement(n.Z,{location:a,title:o},l.createElement(r.Z,{title:"404: Not Found"}),l.createElement("h1",null,"not found :( "),l.createElement("p",null,"잘못된 요청입니다."))}}}]);
+//# sourceMappingURL=component---src-pages-404-js-65f5893b331ee1ce9b3e.js.map

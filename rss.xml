@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 12 Sep 2021 08:56:52 GMT</lastBuildDate><item><title><![CDATA[useHistory로 이동시 state 값을 저장하기]]></title><description><![CDATA[useHistory & useLocation 개발중에 useHistory를 사용하여 안에 path…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/3_usehistory/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/3_usehistory/</guid><pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;useHistory &amp;#x26; useLocation&lt;/h2&gt;
+&lt;p&gt;개발중에 useHistory를 사용하여 &lt;code class=&quot;language-text&quot;&gt;history.push()&lt;/code&gt;안에 path를 넣어 이동하고 있었다.
+이동시에 전달해주고 싶은 값이 있어서 방법을 찾아보았다.
+일반적으로는 다음과 같이 코드를 작성했다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; history &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useHistory&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+history&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/main&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이때 상태도 전달할 수 있는데 다음과 같이 path를 그냥 넣어주지 않고,
+pathname과 state를 넣어주기만 하면 된다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; history &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useHistory&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+history&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  pathname&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;token string&quot;&gt;&apos;/main&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;
+  state&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    user_id&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; userId
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그러면 &lt;code class=&quot;language-text&quot;&gt;/main&lt;/code&gt; 페이지에서는 어떻게 상태값에 접근할 수 있을까?&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useLocation&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; 
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; useid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; location&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sate&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;user_id 
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;이렇게 접근해서 사용할 수 있다 :tada:&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 Composition]]></title><description><![CDATA[목차 Compositon HOC Composition 컴포넌트를 담기 typeof -> type check 확장성 -> 다양한 상황을 품을 수 있다. HOC 고차 컴포넌트 : High Order Component…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/react/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/react/</guid><pubDate>Tue, 06 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;목차&lt;/h1&gt;
+&lt;ol&gt;
+&lt;li&gt;Compositon&lt;/li&gt;
+&lt;li&gt;HOC&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Composition&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;컴포넌트를 담기&lt;/li&gt;
+&lt;li&gt;typeof -&gt; type check&lt;/li&gt;
+&lt;li&gt;확장성 -&gt; 다양한 상황을 품을 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;HOC 고차 컴포넌트&lt;/h2&gt;
+&lt;p&gt;: High Order Component&lt;/p&gt;
+&lt;p&gt;복잡하게 느껴지지만 간단하게 생각하자.
+고차 컴포넌트는 컴포넌트를 가져와 새 컴포넌트를 반환하는 함수이다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HOC -&gt; 함수를 받아서 함수를 리턴&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;javascript&quot;&gt;&lt;pre class=&quot;language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;
+&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; React&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; useState&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; useEffect &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;react&apos;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;//얘는 컴포넌트가 아니라 함수 &lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;export&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;withLoading&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;Component&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token comment&quot;&gt;// 컴포넌트를 받아서 &lt;/span&gt;
+
+  &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;WithLoadingComponent&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;props&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;loading&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; setLoading&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token function&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; timer &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;setLoading&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+      &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;clearTimeout&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;timer&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+    &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; loading &lt;span class=&quot;token operator&quot;&gt;?&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; loading &lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;p&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Component &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;props&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; WithLoadingComponent
+&lt;span class=&quot;token comment&quot;&gt;//컴포넌트를 리턴한다.. &lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Memoization&lt;/h2&gt;
+&lt;p&gt;: 메모이제이션이란 컴퓨터 프로그램이 동일한 계산을 반복해야 할 떄, 이전에 계산한 값을
+메모리에 저장! 함으로써 동일한 계산의 반복 수행을 제거하여 프로그램 실행 속도를
+빠르게 하는 기술이다.&lt;/p&gt;
+&lt;h3&gt;React.memo&lt;/h3&gt;
+&lt;p&gt;동일한 prop으로 렌더링을 한다면 memo를 사용하여 성능향상&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;HOC/ Props 비교해서 메모&lt;/li&gt;
+&lt;li&gt;Profiler 리액트 성능 분석 도구&lt;/li&gt;
+&lt;li&gt;callback -&gt; 함수를 메모이제이션하고 싶을 떄 useCallback&lt;/li&gt;
+&lt;li&gt;value -&gt; 변수를 메모이제이션하고 싶을 때 useMemo&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Context&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;context를 이용하면 일일이 props를 넘겨주지 않고 트리 전체에 데이터를 제공할 수 있다.&lt;/li&gt;
+&lt;li&gt;전역적인 데이터를 관리할 때 쓰는게 좋다.&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[개츠비 첫 글]]></title><description><![CDATA[Hello, Gatsby…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/react-native-project/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/react-native-project/</guid><pubDate>Mon, 05 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Hello, Gatsby&lt;/h2&gt;
+&lt;p&gt;자바 공부할때부터 썼던 &lt;a href=&quot;https://blog.naver.com/kye24601&quot;&gt;네이버 블로그.. &lt;/a&gt;
+뒤죽박죽 나중에 보려고 올려놨었다.
+그리고 노션을 썼는데 생각보다 보기 힘들어서 정리할 곳이 필요하다는 생각이 들었다.
+그러다가 개츠비를 발견하게 되어 맘에 들어서 개츠비 블로그에 정리해보려고 한다&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/720f7c52201689e2e7fc22f8eff99be2/e8277/computer.jpg&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 66.45569620253164%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/jpeg;base64,/9j/2wBDABALDA4MChAODQ4SERATGCgaGBYWGDEjJR0oOjM9PDkzODdASFxOQERXRTc4UG1RV19iZ2hnPk1xeXBkeFxlZ2P/2wBDARESEhgVGC8aGi9jQjhCY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2NjY2P/wgARCAANABQDASIAAhEBAxEB/8QAFwAAAwEAAAAAAAAAAAAAAAAAAAQFA//EABUBAQEAAAAAAAAAAAAAAAAAAAAB/9oADAMBAAIQAxAAAAGlpIckaEA//8QAGRABAQEAAwAAAAAAAAAAAAAAAQIRAxMh/9oACAEBAAEFAvMiglTe7WEur5cf/8QAFREBAQAAAAAAAAAAAAAAAAAAABH/2gAIAQMBAT8BR//EABURAQEAAAAAAAAAAAAAAAAAAAAR/9oACAECAQE/AVf/xAAaEAACAgMAAAAAAAAAAAAAAAAAASFBETGR/9oACAEBAAY/Aks2SMUaL6Qj/8QAGxABAQEAAgMAAAAAAAAAAAAAAREAIUFxkbH/2gAIAQEAAT8hrkVb91sguUwkctITBSgZ1w9bhYnnf//aAAwDAQACAAMAAAAQOP8A/8QAFhEAAwAAAAAAAAAAAAAAAAAAAAER/9oACAEDAQE/EI0Uf//EABURAQEAAAAAAAAAAAAAAAAAABAR/9oACAECAQE/EKP/xAAcEAEAAwADAQEAAAAAAAAAAAABABEhMUFhcfD/2gAIAQEAAT8QqBAJ52hK2wPeowEliPOEqpDLbv8AXCGrQvHemMyjQ59Pk//Z&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;a nice room with computer ..&quot;
+        title=&quot;a nice room with computer ..&quot;
+        src=&quot;/static/720f7c52201689e2e7fc22f8eff99be2/828fb/computer.jpg&quot;
+        srcset=&quot;/static/720f7c52201689e2e7fc22f8eff99be2/ff44c/computer.jpg 158w,
+/static/720f7c52201689e2e7fc22f8eff99be2/a6688/computer.jpg 315w,
+/static/720f7c52201689e2e7fc22f8eff99be2/828fb/computer.jpg 630w,
+/static/720f7c52201689e2e7fc22f8eff99be2/0ede0/computer.jpg 945w,
+/static/720f7c52201689e2e7fc22f8eff99be2/3ac88/computer.jpg 1260w,
+/static/720f7c52201689e2e7fc22f8eff99be2/e8277/computer.jpg 6016w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;</content:encoded></item></channel></rss>
