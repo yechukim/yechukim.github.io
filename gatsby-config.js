@@ -38,6 +38,7 @@ module.exports = {
               maxWidth: 630,
             },
           },
+
           {
             resolve: `gatsby-remark-responsive-iframe`,
             options: {
@@ -47,7 +48,7 @@ module.exports = {
           `gatsby-remark-prismjs`,
           `gatsby-remark-copy-linked-files`,
           `gatsby-remark-smartypants`,
-
+          `gatsby-remark-emoji`
         ],
       },
     },
