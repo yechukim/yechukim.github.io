@@ -1,4 +1,27 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 13 Sep 2021 14:03:24 GMT</lastBuildDate><item><title><![CDATA[useParam을 사용하여 param 값을 바라보기]]></title><description><![CDATA[왜 useParams ? 오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Tue, 14 Sep 2021 13:56:31 GMT</lastBuildDate><item><title><![CDATA[React 에서 svg 파일 사용하기]]></title><description><![CDATA[svg 란? svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다. svg :  Scalable Vector Graphics React 에서 svg를 사용하기 리액트 아이콘을 어떤식으로 사용할까 고민하다가  svg…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</guid><pubDate>Wed, 14 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;svg 란?&lt;/h2&gt;
+&lt;blockquote&gt;
+&lt;p&gt;svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다.&lt;br&gt;
+svg :  Scalable Vector Graphics&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h2&gt;React 에서 svg를 사용하기&lt;/h2&gt;
+&lt;p&gt;리액트 아이콘을 어떤식으로 사용할까 고민하다가  svg를 사용해보기로 했다.&lt;br&gt;
+svg를 사용하는 방법에도 여러가지가 있다.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;이미지 태그에 넣어 사용하기&lt;/li&gt;
+&lt;li&gt;컴포넌트화하여 사용하기&lt;/li&gt;
+&lt;li&gt;svg 태그사용하기&lt;/li&gt;
+&lt;li&gt;SVGR 사용하기&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;…etc&lt;/p&gt;
+&lt;p&gt;나는 컴포넌트로 svg를 사용하기로 결정했다.(그러면 나중에 커스텀할 때도 편하다고..)&lt;br&gt;
+컴포넌트처럼 사용한는 방법은 간단하다. 원하는 svg 파일을 저장하고 다음과 같이 import 하여 사용한다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;import&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;ReactComponent &lt;span class=&quot;token keyword&quot;&gt;as&lt;/span&gt; Home&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;from&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&apos;./home.svg&apos;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+  &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Home&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;create-react-app&lt;/em&gt;에서만 작동한다는 것을 기어하자. &lt;em&gt;create-react-app&lt;/em&gt; 내부에서 SVGR을 사용하기 때문에 리액트 컴포넌트로 svg를 변형하고 import를 해서 쓰는 것이 가능해진다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[useParam을 사용하여 param 값을 바라보기]]></title><description><![CDATA[왜 useParams ? 오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
 useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적어보려 한다. useLocation…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</guid><pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;왜 useParams ?&lt;/h2&gt;
 &lt;p&gt;오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
 useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적어보려 한다.&lt;/p&gt;
