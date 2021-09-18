@@ -1,4 +1,34 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Wed, 15 Sep 2021 13:38:08 GMT</lastBuildDate><item><title><![CDATA[React 에서 svg 파일 사용하기]]></title><description><![CDATA[svg 란? svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다. svg :  Scalable Vector Graphics React 에서 svg를 사용하기 리액트 아이콘을 어떤식으로 사용할까 고민하다가  svg…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</guid><pubDate>Wed, 14 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;svg 란?&lt;/h2&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 18 Sep 2021 13:47:47 GMT</lastBuildDate><item><title><![CDATA[개발 기록]]></title><description><![CDATA[2021.03 - 2021.06 기존 안드로이드 앱 유지보수 + 기능 추가 MVVM 패턴 View 는 코틀린, Model , ViewModel은 자바로 작업 Retrofit을 사용한 비동기 작업(네트워크 통신) databinding (View…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/develop/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/develop/</guid><pubDate>Sun, 18 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;2021.03 - 2021.06&lt;/h1&gt;
+&lt;h3&gt;기존 안드로이드 앱 유지보수 + 기능 추가&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;MVVM 패턴&lt;/li&gt;
+&lt;li&gt;View 는 코틀린, Model , ViewModel은 자바로 작업&lt;/li&gt;
+&lt;li&gt;Retrofit을 사용한 비동기 작업(네트워크 통신)&lt;/li&gt;
+&lt;li&gt;databinding (View 단에서 onClick -&gt; viewModel에서 바로 연결)&lt;/li&gt;
+&lt;li&gt;오류, 리팩토링 😬 (쉽지 않았던 나날들)&lt;/li&gt;
+&lt;li&gt;고객사, 출장보고서 페이지 추가&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;— 보고서 등록, 삭제
+— 고객사 리스트, 등록, 수정, 삭제, 검색&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;이외 뷰단 디테일한 부분 작업&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;2021.07 - 2021 현재&lt;/h1&gt;
+&lt;h3&gt;android app -&gt; reactive webapp&lt;/h3&gt;
+&lt;blockquote&gt;
+&lt;p&gt;리뉴얼되는 앱을 작업하기 위해 안드로이드 개발자에서 급 진로 변경..
+말그대로 맨땅에 헤딩 😈&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;em&gt;backend: sql, node.js&lt;/em&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;h3&gt;react &amp;#x26; react native&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;antd, material theme(mostly for mobile)&lt;/li&gt;
+&lt;li&gt;redux, redux-saga — async&lt;/li&gt;
+&lt;li&gt;useLocation, useHistory, useParams, Link, Router (react-router)&lt;/li&gt;
+&lt;li&gt;useDispatch, useSelector — data fetching …&lt;/li&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[React 에서 svg 파일 사용하기]]></title><description><![CDATA[svg 란? svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다. svg :  Scalable Vector Graphics React 에서 svg를 사용하기 리액트 아이콘을 어떤식으로 사용할까 고민하다가  svg…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</guid><pubDate>Wed, 14 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;svg 란?&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다.&lt;br&gt;
 svg :  Scalable Vector Graphics&lt;/p&gt;
