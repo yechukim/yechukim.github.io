@@ -28,4 +28,4 @@ import {ReactComponent as Home} from './home.svg';
 </div>
 
 ```
-*create-react-app*에서만 작동한다는 것을 기어하자. *create-react-app* 내부에서 SVGR을 사용하기 때문에 리액트 컴포넌트로 svg를 변형하고 import를 해서 쓰는 것이 가능해진다.
+*create-react-app*에서만 작동한다는 것을 기억하자. *create-react-app* 내부에서 SVGR을 사용하기 때문에 리액트 컴포넌트로 svg를 변형하고 import를 해서 쓰는 것이 가능해진다.
