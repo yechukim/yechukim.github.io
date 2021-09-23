@@ -29,3 +29,8 @@ import {ReactComponent as Home} from './home.svg';
 
 ```
 *create-react-app*에서만 작동한다는 것을 기억하자. *create-react-app* 내부에서 SVGR을 사용하기 때문에 리액트 컴포넌트로 svg를 변형하고 import를 해서 쓰는 것이 가능해진다.
+
+++ 추가 - 2021.09.23  
+svg 컴포넌트를 커스텀해서 쓰게 되었다.
+svg 파일을 확인해보면, fill, stroke 부분에 색이 들어가 있는걸 볼 수 있는데 이 부분을 ```"current"```로 변경해주고
+컴포넌트 사용할때 fill, stroke props에 원하는 색상을 넣어주면 색상을 변경하여 커스텀해서 쓸 수 있다. 
