@@ -1,4 +1,94 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Sat, 18 Sep 2021 13:47:47 GMT</lastBuildDate><item><title><![CDATA[개발 기록]]></title><description><![CDATA[2021.03 - 2021.06 기존 안드로이드 앱 유지보수 + 기능 추가 MVVM 패턴 View 는 코틀린, Model , ViewModel은 자바로 작업 Retrofit을 사용한 비동기 작업(네트워크 통신) databinding (View…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/develop/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/develop/</guid><pubDate>Sun, 18 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;2021.03 - 2021.06&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 26 Sep 2021 08:57:31 GMT</lastBuildDate><item><title><![CDATA[CSS display - flex]]></title><description><![CDATA[flex 잘 이용하기 프론트앤드 개발자라면 css, html 은 기본으로 잘 다루어야 한다. 아직 헷갈리는게 많지만 이번에 개발하면서 flex 를 굉장히 많이 쓰게되어서 그만 헷갈리도록 .. 기초지만 정리를 해보려고 한다. Properties for…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/css/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/css/</guid><pubDate>Fri, 23 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;flex 잘 이용하기&lt;/h1&gt;
+&lt;p&gt;프론트앤드 개발자라면 css, html 은 기본으로 잘 다루어야 한다.&lt;br&gt;
+아직 헷갈리는게 많지만 이번에 개발하면서 flex 를 굉장히 많이 쓰게되어서 그만 헷갈리도록 .. 기초지만 정리를 해보려고 한다.&lt;/p&gt;
+&lt;h2&gt;Properties for the Parent (container)&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;&lt;span class=&quot;token property&quot;&gt;display&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; flex&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;/* 또는 inline-flex */&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/*main-axis 정의 */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;flex-direction&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; row | row-reverse | column | column-reverse&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/* flex item은 한줄에 정렬되는 것이 디폴트, 이를 변경하기 위해서 정의*/&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;flex-wrap&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; nowrap | wrap | wrap-reverse&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/*flex-direction + flex-wrap 을 한꺼번에 정의할 수 있음 */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;flex-flow&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; column wrap 
+
+&lt;span class=&quot;token comment&quot;&gt;/*main axis 에 맞게 정렬되는 방식을 정의*/&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;justify-content&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; flex-start | flex-end | center | space-between | space-around | space-evenly |start | end | left | right
+
+&lt;span class=&quot;token comment&quot;&gt;/*cross axis에 맞게 정렬되는 방식을 정의 */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;align-items&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; stretch | flex-start | flex-end | center | baseline | first baseline | last baseline | start | end | self-start | self-end 
+
+&lt;span class=&quot;token comment&quot;&gt;/*cross axis에 여유공간이 있을 때 flex container 를 정렬 */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;align-content&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; flex-start | flex-end | center | space-between | space-around | space-evenly | stretch | start | end | baseline | first baseline | last baseline
+
+&lt;span class=&quot;token comment&quot;&gt;/* gap 속성은 flex item 간의 간격을 조절해줌 , item 간의 간격만 조정!! not on the outer edges */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;gap&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 10px&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;  &lt;span class=&quot;token comment&quot;&gt;/*이런식 */&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;flex-direction&lt;/th&gt;
+&lt;th&gt;flex wrap&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;row(default)&lt;/em&gt;: left to right&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;nowrap(default)&lt;/em&gt; : on one line&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;row-reverse&lt;/em&gt;: right to left&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;wrap&lt;/em&gt;: multiple lines, from top to bottom&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;column&lt;/em&gt; : top to bottom&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;wrap-reverse&lt;/em&gt;: multiple lines, from bottm to top&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;column-reverse&lt;/em&gt;: bottom to top&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;justify-content&lt;/th&gt;
+&lt;th&gt;align-itmes&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;flex-start&lt;/em&gt; 는 flex-direction 의 시작방향을 따라 item이 정렬&lt;/td&gt;
+&lt;td&gt;&lt;em&gt;stretch&lt;/em&gt; : 디폴트 값&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;&lt;em&gt;start&lt;/em&gt;는 writing-mode direction 시작방향에 따라 item이 정렬&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;h2&gt;Properties for the Children (flex items)&lt;/h2&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;css&quot;&gt;&lt;pre class=&quot;language-css&quot;&gt;&lt;code class=&quot;language-css&quot;&gt;
+&lt;span class=&quot;token comment&quot;&gt;/*flex container 순서 조작 , 같은 order인 아이템이 source order로 바뀜?*/&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;order&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 5&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;/*디폴트 : 0 */&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/* flex item to grow , negative numbers are invalid */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;flex-grow&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 2&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;/*디폴트 : 0 */&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/*flex item to shrink */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;flex-shrink&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 3&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;/*디폴트 1 */&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/*남은 공간을 배분하기 전에 한 요소가 가지는 기본 크기를 정의 */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;flex-basis&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt;  | auto&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;/* default auto */&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/*flex-grow, flex-shrink, flex-basis 합친거  2,3번쨰 param 생략 가능 */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;flex&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; 0 1 auto&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot;&gt;/*디폴트값*/&lt;/span&gt;
+
+&lt;span class=&quot;token comment&quot;&gt;/*정의된 정렬방식을 override할 수 있음 */&lt;/span&gt;
+&lt;span class=&quot;token property&quot;&gt;align-self&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; auto | flex-start | flex-end | center | baseline | stretch&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;em&gt;float, clear, vertical-align 은 flex item에 아무 영향을 주지 못한다&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;—09.26일 작성완료&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개발 기록]]></title><description><![CDATA[2021.03 - 2021.06 기존 안드로이드 앱 유지보수 + 기능 추가 MVVM 패턴 View 는 코틀린, Model , ViewModel은 자바로 작업 Retrofit을 사용한 비동기 작업(네트워크 통신) databinding (View…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/develop/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/develop/</guid><pubDate>Sun, 18 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;2021.03 - 2021.06&lt;/h1&gt;
 &lt;h3&gt;기존 안드로이드 앱 유지보수 + 기능 추가&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;MVVM 패턴&lt;/li&gt;
@@ -51,7 +141,11 @@ svg를 사용하는 방법에도 여러가지가 있다.&lt;/p&gt;
   &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Home&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
 &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;/&lt;/span&gt;div&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;&lt;em&gt;create-react-app&lt;/em&gt;에서만 작동한다는 것을 기억하자. &lt;em&gt;create-react-app&lt;/em&gt; 내부에서 SVGR을 사용하기 때문에 리액트 컴포넌트로 svg를 변형하고 import를 해서 쓰는 것이 가능해진다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[useParam을 사용하여 param 값을 바라보기]]></title><description><![CDATA[왜 useParams ? 오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
+&lt;p&gt;&lt;em&gt;create-react-app&lt;/em&gt;에서만 작동한다는 것을 기억하자. &lt;em&gt;create-react-app&lt;/em&gt; 내부에서 SVGR을 사용하기 때문에 리액트 컴포넌트로 svg를 변형하고 import를 해서 쓰는 것이 가능해진다.&lt;/p&gt;
+&lt;p&gt;++ 추가 - 2021.09.23&lt;br&gt;
+svg 컴포넌트를 커스텀해서 쓰게 되었다.
+svg 파일을 확인해보면, fill, stroke 부분에 색이 들어가 있는걸 볼 수 있는데 이 부분을 &lt;code class=&quot;language-text&quot;&gt;&quot;current&quot;&lt;/code&gt;로 변경해주고
+컴포넌트 사용할때 fill, stroke props에 원하는 색상을 넣어주면 색상을 변경하여 커스텀해서 쓸 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[useParam을 사용하여 param 값을 바라보기]]></title><description><![CDATA[왜 useParams ? 오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
 useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적어보려 한다. useLocation…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</guid><pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;왜 useParams ?&lt;/h2&gt;
 &lt;p&gt;오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
 useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적어보려 한다.&lt;/p&gt;
