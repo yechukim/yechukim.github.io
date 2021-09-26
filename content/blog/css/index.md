@@ -42,7 +42,7 @@ gap : 10px;  /*이런식 */
 |*column-reverse*: bottom to top |
 
 justify-content |align-itmes |
-||--------------||--------------|
+|--------------|-----------|
 *flex-start* 는 flex-direction 의 시작방향을 따라 item이 정렬 | *stretch* : 디폴트 값 
 *start*는 writing-mode direction 시작방향에 따라 item이 정렬 |
 
@@ -70,4 +70,4 @@ align-self: auto | flex-start | flex-end | center | baseline | stretch;
 ```
 *float, clear, vertical-align 은 flex item에 아무 영향을 주지 못한다*
 
--- 09.26일 작성완료 
+--09.26일 작성완료 
