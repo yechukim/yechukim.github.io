@@ -1,4 +1,62 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Sun, 26 Sep 2021 08:57:31 GMT</lastBuildDate><item><title><![CDATA[CSS display - flex]]></title><description><![CDATA[flex 잘 이용하기 프론트앤드 개발자라면 css, html 은 기본으로 잘 다루어야 한다. 아직 헷갈리는게 많지만 이번에 개발하면서 flex 를 굉장히 많이 쓰게되어서 그만 헷갈리도록 .. 기초지만 정리를 해보려고 한다. Properties for…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/css/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/css/</guid><pubDate>Fri, 23 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;flex 잘 이용하기&lt;/h1&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[예츄 블로그]]></title><description><![CDATA[coding blog made by Gatsby ]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io</link><generator>GatsbyJS</generator><lastBuildDate>Mon, 11 Oct 2021 07:04:56 GMT</lastBuildDate><item><title><![CDATA[children에서 parent 컴포넌트 컨트롤하기 (feat.콜백 함수)]]></title><description><![CDATA[Children ---> Parent 하지만 프로젝트 도중 child 컴포넌트에서 parent를 컨트롤 해주어야 하는 경우가 생겼다. 물론 parent에서 상태관리를 하고 이를 child에게 넘겨주는 것이 the best way…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/childToParent/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/childToParent/</guid><pubDate>Mon, 11 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Children ---&gt; Parent&lt;/h2&gt;
+&lt;p&gt;하지만 프로젝트 도중 child 컴포넌트에서 parent를 컨트롤 해주어야 하는 경우가 생겼다. 물론 parent에서 상태관리를 하고 이를 child에게 넘겨주는 것이 the best way 겠지만, 현재로서 전체를 바꾸기에는 무리가 있어서 어쩔 수 없이 child에서 parent를 컨트롤 하기로 했다.&lt;/p&gt;
+&lt;h2&gt;callback 넘겨주기&lt;/h2&gt;
+&lt;p&gt;parent 컴포넌트에서 callback을 child 에 넘겨주고, child 컴포넌트에서 해당 콜백에 값을 넣어주어 parent에 정의한 상태를 set해주면 된다.&lt;/p&gt;
+&lt;p&gt;내 코드의 예시를 보면 다음과 같다.
+parent 컴포넌트에 다음과 같이 정의한다고 생각해보자. child 컴포넌트에 callback을 넘겨준다(onPermission)&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//parent &lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;permission&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; setPermission&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useState&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;onPermission&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token function&quot;&gt;setPermission&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;value&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;...&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;&lt;span class=&quot;token class-name&quot;&gt;MyChildComponent&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;onPermission&lt;/span&gt;&lt;span class=&quot;token script language-javascript&quot;&gt;&lt;span class=&quot;token script-punctuation punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;onPermission&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token plain-text&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그리고 child 컴포넌트에서는 다음과 같이 쓸 수 있다.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;jsx&quot;&gt;&lt;pre class=&quot;language-jsx&quot;&gt;&lt;code class=&quot;language-jsx&quot;&gt;&lt;span class=&quot;token comment&quot;&gt;//child&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;token function-variable function&quot;&gt;MyChildComponent&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token parameter&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;onPermission&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+
+  &lt;span class=&quot;token function&quot;&gt;useEffect&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token operator&quot;&gt;=&gt;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token function&quot;&gt;onPermission&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token boolean&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+  &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
+
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;그러면 처음에 부모 컴포넌트에서는 false였던 permission이 child component의 useEffect에서 넣어준 값을 통해 &lt;code class=&quot;language-text&quot;&gt;setPermission(true)&lt;/code&gt;가 되어 permission 이 true로 변하게 된다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[auto margin의 사용]]></title><description><![CDATA[auto margin 의 사용 navigation bar 에서 흔한 패턴을 생각 해보면, main은 왼쪽, 나머지는 오른쪽에 정렬하는 경우가 있다. 아래의 이미지를 보면 를 사용한 것이 아닌가 하겠지만, 이렇게 쓴다면 d 뒤에의 e…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/css_margin/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/css_margin/</guid><pubDate>Mon, 11 Oct 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;auto margin 의 사용&lt;/h1&gt;
+&lt;p&gt;navigation bar 에서 흔한 패턴을 생각 해보면, main은 왼쪽, 나머지는 오른쪽에 정렬하는 경우가 있다. 아래의 이미지를 보면 &lt;code class=&quot;language-text&quot;&gt;justify-self&lt;/code&gt;를 사용한 것이 아닌가 하겠지만, 이렇게 쓴다면 d 뒤에의 e 마저의 정렬까지도 바뀌어버리고 만다.&lt;/p&gt;
+&lt;p&gt;&lt;span
+      class=&quot;gatsby-resp-image-wrapper&quot;
+      style=&quot;position: relative; display: block; margin-left: auto; margin-right: auto; max-width: 630px; &quot;
+    &gt;
+      &lt;a
+    class=&quot;gatsby-resp-image-link&quot;
+    href=&quot;/static/a4244ef385baf9d69553ecc17cdbc7e2/af192/align7.png&quot;
+    style=&quot;display: block&quot;
+    target=&quot;_blank&quot;
+    rel=&quot;noopener&quot;
+  &gt;
+    &lt;span
+    class=&quot;gatsby-resp-image-background-image&quot;
+    style=&quot;padding-bottom: 13.29113924050633%; position: relative; bottom: 0; left: 0; background-image: url(&apos;data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAADCAYAAACTWi8uAAAACXBIWXMAAAsTAAALEwEAmpwYAAAA2ElEQVQI12Pw77/5w6f78o+Avus/Iqbc+uHbc+2HL4jff/Orf9/N//5dF9Zf79RnmzhzEW/3lHl8/3fZscS07TD37bn2NWLKrZ8gfT4Q9T8CJ9z8yZC88OV/x657/wOnPvnfuPndf6+Jj/87d9//n7Hk1d+YuS/+O3Xe3RA+6yXD5s4Ihv+bLBjiuvYwODWd1fbof/y3YfO7/0HTnoD1Jy14+T9n+ev/DCCTQS7y670OtgVEo7vwWpchO9yFOx1Zott2mPv1Xv8a0H/zF0y9f9/NH/79N38CAK9XlJZ1vCUrAAAAAElFTkSuQmCC&apos;); background-size: cover; display: block;&quot;
+  &gt;&lt;/span&gt;
+  &lt;img
+        class=&quot;gatsby-resp-image-image&quot;
+        alt=&quot;auto margin 을 사용하여 정렬&quot;
+        title=&quot;auto margin 을 사용하여 정렬&quot;
+        src=&quot;/static/a4244ef385baf9d69553ecc17cdbc7e2/f058b/align7.png&quot;
+        srcset=&quot;/static/a4244ef385baf9d69553ecc17cdbc7e2/c26ae/align7.png 158w,
+/static/a4244ef385baf9d69553ecc17cdbc7e2/6bdcf/align7.png 315w,
+/static/a4244ef385baf9d69553ecc17cdbc7e2/f058b/align7.png 630w,
+/static/a4244ef385baf9d69553ecc17cdbc7e2/af192/align7.png 645w&quot;
+        sizes=&quot;(max-width: 630px) 100vw, 630px&quot;
+        style=&quot;width:100%;height:100%;margin:0;vertical-align:middle;position:absolute;top:0;left:0;&quot;
+        loading=&quot;lazy&quot;
+        decoding=&quot;async&quot;
+      /&gt;
+  &lt;/a&gt;
+    &lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;이 경우 아이템 d에 &lt;code class=&quot;language-text&quot;&gt;margin-left: auto;&lt;/code&gt;를 주면 된다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[CSS display - flex]]></title><description><![CDATA[flex 잘 이용하기 프론트앤드 개발자라면 css, html 은 기본으로 잘 다루어야 한다. 아직 헷갈리는게 많지만 이번에 개발하면서 flex 를 굉장히 많이 쓰게되어서 그만 헷갈리도록 .. 기초지만 정리를 해보려고 한다. Properties for…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/css_flex/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/css_flex/</guid><pubDate>Thu, 23 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;flex 잘 이용하기&lt;/h1&gt;
 &lt;p&gt;프론트앤드 개발자라면 css, html 은 기본으로 잘 다루어야 한다.&lt;br&gt;
 아직 헷갈리는게 많지만 이번에 개발하면서 flex 를 굉장히 많이 쓰게되어서 그만 헷갈리도록 .. 기초지만 정리를 해보려고 한다.&lt;/p&gt;
 &lt;h2&gt;Properties for the Parent (container)&lt;/h2&gt;
@@ -88,7 +146,7 @@
 &lt;span class=&quot;token comment&quot;&gt;/*정의된 정렬방식을 override할 수 있음 */&lt;/span&gt;
 &lt;span class=&quot;token property&quot;&gt;align-self&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;:&lt;/span&gt; auto | flex-start | flex-end | center | baseline | stretch&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;&lt;em&gt;float, clear, vertical-align 은 flex item에 아무 영향을 주지 못한다&lt;/em&gt;&lt;/p&gt;
-&lt;p&gt;—09.26일 작성완료&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개발 기록]]></title><description><![CDATA[2021.03 - 2021.06 기존 안드로이드 앱 유지보수 + 기능 추가 MVVM 패턴 View 는 코틀린, Model , ViewModel은 자바로 작업 Retrofit을 사용한 비동기 작업(네트워크 통신) databinding (View…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/develop/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/develop/</guid><pubDate>Sun, 18 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;2021.03 - 2021.06&lt;/h1&gt;
+&lt;p&gt;—09.26일 작성완료&lt;/p&gt;</content:encoded></item><item><title><![CDATA[개발 기록]]></title><description><![CDATA[2021.03 - 2021.06 기존 안드로이드 앱 유지보수 + 기능 추가 MVVM 패턴 View 는 코틀린, Model , ViewModel은 자바로 작업 Retrofit을 사용한 비동기 작업(네트워크 통신) databinding (View…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/develop/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/develop/</guid><pubDate>Sat, 18 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;2021.03 - 2021.06&lt;/h1&gt;
 &lt;h3&gt;기존 안드로이드 앱 유지보수 + 기능 추가&lt;/h3&gt;
 &lt;ul&gt;
 &lt;li&gt;MVVM 패턴&lt;/li&gt;
@@ -118,7 +176,7 @@
 &lt;li&gt;redux, redux-saga — async&lt;/li&gt;
 &lt;li&gt;useLocation, useHistory, useParams, Link, Router (react-router)&lt;/li&gt;
 &lt;li&gt;useDispatch, useSelector — data fetching …&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[React 에서 svg 파일 사용하기]]></title><description><![CDATA[svg 란? svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다. svg :  Scalable Vector Graphics React 에서 svg를 사용하기 리액트 아이콘을 어떤식으로 사용할까 고민하다가  svg…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</guid><pubDate>Wed, 14 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;svg 란?&lt;/h2&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[React 에서 svg 파일 사용하기]]></title><description><![CDATA[svg 란? svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다. svg :  Scalable Vector Graphics React 에서 svg를 사용하기 리액트 아이콘을 어떤식으로 사용할까 고민하다가  svg…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/5_svg/</guid><pubDate>Tue, 14 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;svg 란?&lt;/h2&gt;
 &lt;blockquote&gt;
 &lt;p&gt;svg는 벡터 그래픽 이미지 형식으로 XML을 기반으로 하고 있다.&lt;br&gt;
 svg :  Scalable Vector Graphics&lt;/p&gt;
@@ -146,7 +204,7 @@ svg를 사용하는 방법에도 여러가지가 있다.&lt;/p&gt;
 svg 컴포넌트를 커스텀해서 쓰게 되었다.
 svg 파일을 확인해보면, fill, stroke 부분에 색이 들어가 있는걸 볼 수 있는데 이 부분을 &lt;code class=&quot;language-text&quot;&gt;&quot;current&quot;&lt;/code&gt;로 변경해주고
 컴포넌트 사용할때 fill, stroke props에 원하는 색상을 넣어주면 색상을 변경하여 커스텀해서 쓸 수 있다.&lt;/p&gt;</content:encoded></item><item><title><![CDATA[useParam을 사용하여 param 값을 바라보기]]></title><description><![CDATA[왜 useParams ? 오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
-useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적어보려 한다. useLocation…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</guid><pubDate>Tue, 13 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;왜 useParams ?&lt;/h2&gt;
+useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적어보려 한다. useLocation…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/4_useParam/</guid><pubDate>Mon, 13 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;왜 useParams ?&lt;/h2&gt;
 &lt;p&gt;오늘 업무를 하다가 useLocation이 내가 원하는 작업이 아니라는 것을 깨닫고,
 useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적어보려 한다.&lt;/p&gt;
 &lt;h3&gt;useLocation 을 사용했을 때&lt;/h3&gt;
@@ -172,7 +230,7 @@ useParams으로 다시 코드를 작성했다. 어떤 부분이 달랐는지 적
 &lt;span class=&quot;token comment&quot;&gt;//userId는 URL에 있을 것이기 때문에 이것만 바라보면 된다 &lt;/span&gt;
 &lt;span class=&quot;token comment&quot;&gt;//아마 아이디는 암호화 해야겠지만..&lt;/span&gt;
  &lt;span class=&quot;token function&quot;&gt;dispatch&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;getUsers&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt; userId&lt;span class=&quot;token operator&quot;&gt;:&lt;/span&gt; params&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;userId &lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[useHistory로 이동시 state 값 넣기, useLocation 의 사용]]></title><description><![CDATA[useHistory & useLocation 개발중에 useHistory를 사용하여 안에 path…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/3_usehistory/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/3_usehistory/</guid><pubDate>Mon, 12 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;useHistory &amp;#x26; useLocation&lt;/h2&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;</content:encoded></item><item><title><![CDATA[useHistory로 이동시 state 값 넣기, useLocation 의 사용]]></title><description><![CDATA[useHistory & useLocation 개발중에 useHistory를 사용하여 안에 path…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/3_usehistory/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/3_usehistory/</guid><pubDate>Sun, 12 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;useHistory &amp;#x26; useLocation&lt;/h2&gt;
 &lt;p&gt;개발중에 useHistory를 사용하여 &lt;code class=&quot;language-text&quot;&gt;history.push()&lt;/code&gt;안에 path를 넣어 이동하고 있었다.
 이동시에 전달해주고 싶은 값이 있어서 방법을 찾아보았다.
 일반적으로는 다음과 같이 코드를 작성했다.&lt;/p&gt;
@@ -191,7 +249,7 @@ history&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;js&quot;&gt;&lt;pre class=&quot;language-js&quot;&gt;&lt;code class=&quot;language-js&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; location &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;useLocation&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; 
 &lt;span class=&quot;token keyword&quot;&gt;const&lt;/span&gt; useid &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; location&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;sate&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;user_id 
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
-&lt;p&gt;이렇게 접근해서 사용할 수 있다 🎉&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 Composition]]></title><description><![CDATA[목차 Compositon HOC Composition 컴포넌트를 담기 typeof -> type check 확장성 -> 다양한 상황을 품을 수 있다. HOC 고차 컴포넌트 : High Order Component…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/react/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/react/</guid><pubDate>Tue, 06 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;목차&lt;/h1&gt;
+&lt;p&gt;이렇게 접근해서 사용할 수 있다 🎉&lt;/p&gt;</content:encoded></item><item><title><![CDATA[리액트 Composition]]></title><description><![CDATA[목차 Compositon HOC Composition 컴포넌트를 담기 typeof -> type check 확장성 -> 다양한 상황을 품을 수 있다. HOC 고차 컴포넌트 : High Order Component…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/react/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/react/</guid><pubDate>Mon, 06 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h1&gt;목차&lt;/h1&gt;
 &lt;ol&gt;
 &lt;li&gt;Compositon&lt;/li&gt;
 &lt;li&gt;HOC&lt;/li&gt;
@@ -245,7 +303,7 @@ history&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span cl
 &lt;ul&gt;
 &lt;li&gt;context를 이용하면 일일이 props를 넘겨주지 않고 트리 전체에 데이터를 제공할 수 있다.&lt;/li&gt;
 &lt;li&gt;전역적인 데이터를 관리할 때 쓰는게 좋다.&lt;/li&gt;
-&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[개츠비 첫 글]]></title><description><![CDATA[Hello, Gatsby…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/react-native-project/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/react-native-project/</guid><pubDate>Mon, 05 Sep 2022 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Hello, Gatsby&lt;/h2&gt;
+&lt;/ul&gt;</content:encoded></item><item><title><![CDATA[개츠비 첫 글]]></title><description><![CDATA[Hello, Gatsby…]]></description><link>https://gatsbystarterblogsource.gatsbyjs.io/react-native-project/</link><guid isPermaLink="false">https://gatsbystarterblogsource.gatsbyjs.io/react-native-project/</guid><pubDate>Sun, 05 Sep 2021 00:00:00 GMT</pubDate><content:encoded>&lt;h2&gt;Hello, Gatsby&lt;/h2&gt;
 &lt;p&gt;자바 공부할때부터 썼던 &lt;a href=&quot;https://blog.naver.com/kye24601&quot;&gt;네이버 블로그.. &lt;/a&gt;
 뒤죽박죽 나중에 보려고 올려놨었다.
 그리고 노션을 썼는데 생각보다 보기 힘들어서 정리할 곳이 필요하다는 생각이 들었다.
