@@ -1,6 +1,6 @@
 ---
 title: CSS display - flex
-date: "2022-09-23"
+date: "2021-09-23"
 description: "왜 css는 항상 헷갈리는가 "
 ---
 

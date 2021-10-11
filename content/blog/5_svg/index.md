@@ -1,6 +1,6 @@
 ---
 title: React 에서 svg 파일 사용하기
-date: "2022-09-14"
+date: "2021-09-14"
 description: "svg를 컴포넌트화하여 사용할 수 있다."
 ---
 

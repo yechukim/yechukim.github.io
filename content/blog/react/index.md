@@ -1,6 +1,6 @@
 ---
 title: 리액트 Composition 
-date: "2022-09-06"
+date: "2021-09-06"
 description: "패스트 캠퍼스 강의 "
 ---
 

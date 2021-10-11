@@ -1,6 +1,6 @@
 ---
 title: 개츠비 첫 글 
-date: "2022-09-05"
+date: "2021-09-05"
 description: "개츠비 블로그 만들어본 날"
 ---
 ## Hello, Gatsby 

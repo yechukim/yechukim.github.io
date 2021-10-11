@@ -1,6 +1,6 @@
 ---
 title: useHistory로 이동시 state 값 넣기, useLocation 의 사용 
-date: "2022-09-12"
+date: "2021-09-12"
 description: "useHistory 이용시 useLocation을 사용하여 상태값에 접근할 수 있다."
 ---
 
